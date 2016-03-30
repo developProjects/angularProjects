@@ -1,0 +1,28 @@
+ <div ng-hide="editorEnabled">
+      {{title}}
+      <a href="javascript:void(0)" ng-click="enableEditor()">Edit title</a>
+    </div>
+    <div ng-show="editorEnabled">
+      <input ng-model="editableTitle" ng-show="editorEnabled">
+      <a href="javascript:void(0)" ng-click="save()">Save</a>
+      or
+      <a href="javascript:void(0)" ng-click="disableEditor()">cancel</a>.
+    </div>
+
+
+ $scope.title = "Welcome to this demo!";
+  $scope.editorEnabled = false;
+  
+  $scope.enableEditor = function() {
+    $scope.editorEnabled = true;
+    $scope.editableTitle = $scope.title;
+  };
+  
+  $scope.disableEditor = function() {
+    $scope.editorEnabled = false;
+  };
+  
+  $scope.save = function() {
+    $scope.title = $scope.editableTitle;
+    $scope.disableEditor();
+  };
